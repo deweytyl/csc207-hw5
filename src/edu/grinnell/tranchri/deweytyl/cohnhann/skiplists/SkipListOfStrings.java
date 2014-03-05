@@ -2,9 +2,12 @@ package edu.grinnell.tranchri.deweytyl.cohnhann.skiplists;
 
 public class SkipListOfStrings
 {
-  SkipListNode[] head;
+  SkipListNode[] head; // How do we want to implement head? an empty node? or just the pointers?
   SkipListNode[] prev;
   SkipListNode[] next;
+
+  // Additionally, we need to think about what NIL means in this context.
+  // ~design decisions~
 
   int maxLevel;
 
