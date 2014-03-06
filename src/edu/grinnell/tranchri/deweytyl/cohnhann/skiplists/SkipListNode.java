@@ -4,14 +4,14 @@ public class SkipListNode
 {
 
   String contents;
-  SkipListNode[] pointers;
+  SkipListNode[] next;
   int level;
 
   public SkipListNode(String stuff, int lvl)
   {
     contents = stuff;
-    pointers = new SkipListNode[lvl+1]; // is lvl max level or num levels?
-    level = pointers.length;
+    next = new SkipListNode[lvl+1]; // is lvl max level or num levels?
+    level = next.length;
   } // SkipListNode<T>(T, int)
 
   /**
@@ -21,7 +21,7 @@ public class SkipListNode
    */
   public SkipListNode getNext(int lvl)
   {
-    return pointers[lvl];
+    return next[lvl];
   } // getNext(int)
   
   /**
@@ -31,7 +31,7 @@ public class SkipListNode
    */
   public void setNext(SkipListNode node, int lvl)
   {
-    pointers[lvl] = node;
+    next[lvl] = node;
   } // setNext(SkipListOfStringsNode, int)
   
   /**
@@ -42,6 +42,6 @@ public class SkipListNode
    */
   public String peek(int lvl)
   {
-    return pointers[lvl].contents;
+    return next[lvl].contents;
   } // peek(int)
 } // class SkipListOfStringsNode
