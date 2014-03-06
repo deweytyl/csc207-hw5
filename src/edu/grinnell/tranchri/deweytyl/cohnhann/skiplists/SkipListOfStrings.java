@@ -11,15 +11,16 @@ public class SkipListOfStrings
   int maxLevel;
 
   /**
-   * SkipListOfStrings
+   * 
    */
   public SkipListOfStrings()
   {
-
+    
   } // SkipListOfStrings
 
   /**
    * add
+   * @param str
    */
   public void add(String str)
   {
@@ -39,18 +40,43 @@ public class SkipListOfStrings
       } // for
     length++;
   } // add(String)
+  
+  /**
+   * 
+   * @param strs
+   */
+  public void add(String[] strs)
+  {
+    for (int i = 0; i < strs.length; i++)
+      {
+        this.add(strs[i]);
+      }
+  } // add(String[])
 
   /**
    * remove
+   * @param str
    */
   public void remove(String str)
   {
-    // STUB
+    SkipListNode[] previousNodes = findPlace(str);
+    SkipListNode currentNode = previousNodes[0].next[0];
+    
+    for (int i = 0; i < currentNode.level(); i++)
+      {
+        previousNodes[i].next[i] = currentNode.next[i];
+      } // for
   } // remove(String)
-
+  
+  /**
+   * contains
+   * @param str
+   * @return
+   */
   public boolean contains(String str)
   {
-    return false; // STUB
+    SkipListNode[] previousNodes = findPlace(str);
+    return (str.compareTo(previousNodes[0].peek(0)) == 0); // STUB
   } // contains(String)
 
   /**
