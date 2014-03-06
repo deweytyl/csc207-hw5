@@ -1,5 +1,7 @@
 package edu.grinnell.tranchri.deweytyl.cohnhann.skiplists;
 
+import java.util.Random;
+
 public class SkipListOfStrings
 {
   SkipListNode head; // How do we want to implement head? an empty node? or
@@ -33,7 +35,7 @@ public class SkipListOfStrings
       {
         newNode.next[i] = previousNodes[i].next[i];
       } // for
-    
+
     for (int i = 0; i < newNode.level(); i++)
       {
         previousNodes[i].next[i] = newNode;
@@ -123,10 +125,28 @@ public class SkipListOfStrings
     return null;
   } // findPlace(String)
 
+  /**
+   * Assign a random level to a node.
+   */
   private int assignLevel()
   {
-    return 0; // STUB
-  }
+    // Make a random generator.
+    Random random = new Random();
+    double p = 1 / 2;
+    // maxLevel = log base 1/p n
+    int maxLevel = (int) (Math.log10(this.length) / Math.log10(1 / p));
+
+    for (int i = 1; i < maxLevel; i++)
+      {
+        if (random.nextInt() < (1 - p))
+          {
+            return i;
+          } // if
+      } // for
+    
+    // Return maxLevel otherwise
+    return maxLevel;
+  } // assignLvl()
 
   public void increaseMaxLevel(int lvl)
   {
