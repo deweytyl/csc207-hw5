@@ -7,21 +7,64 @@ public class SkipListOfStrings
   SkipListNode head; // How do we want to implement head? an empty node? or
                      // just the pointers?
   int length;
-  // Additionally, we need to think about what NIL means in this context.
-  // ~design decisions~
-
   int maxLevel;
 
   /**
-   * 
+   * SkipListOfStrings
    */
   public SkipListOfStrings()
   {
-    
+    maxLevel = 99;
+    head = new SkipListNode("HEAD", maxLevel);
+    SkipListNode nil = new SkipListNode("NIL", 0);
+    for (int i = 0; i <= maxLevel; i++)
+      {
+        head.next[i] = nil;
+      } // for
+    length = 0;
   } // SkipListOfStrings
 
   /**
+   * SkipListOfStrings
+   * 
+   * @param str
+   */
+  public SkipListOfStrings(String str)
+  {
+    maxLevel = 99;
+    head = new SkipListNode("HEAD", maxLevel);
+    SkipListNode nil = new SkipListNode("NIL", 0);
+    for (int i = 0; i <= maxLevel; i++)
+      {
+        head.next[i] = nil;
+      } // for
+    length = 0;
+
+    this.add(str);
+  } // SkipListOfStrings(String);
+
+  /**
+   * SkipListOfStrings
+   * 
+   * @param strs
+   */
+  public SkipListOfStrings(String[] strs)
+  {
+    maxLevel = 99;
+    head = new SkipListNode("HEAD", maxLevel);
+    SkipListNode nil = new SkipListNode("NIL", 0);
+    for (int i = 0; i <= maxLevel; i++)
+      {
+        head.next[i] = nil;
+      } // for
+    length = 0;
+
+    this.add(strs);
+  } // SkipListOfStrings(String[]);
+
+  /**
    * add
+   * 
    * @param str
    */
   public void add(String str)
@@ -42,7 +85,7 @@ public class SkipListOfStrings
       } // for
     length++;
   } // add(String)
-  
+
   /**
    * 
    * @param strs
@@ -57,21 +100,30 @@ public class SkipListOfStrings
 
   /**
    * remove
+   * 
    * @param str
    */
   public void remove(String str)
   {
     SkipListNode[] previousNodes = findPlace(str);
     SkipListNode currentNode = previousNodes[0].next[0];
-    
-    for (int i = 0; i < currentNode.level(); i++)
+
+    // if this is the right node
+    if (str.compareTo(currentNode.contents) == 0)
       {
-        previousNodes[i].next[i] = currentNode.next[i];
-      } // for
+        // de-reference the last node
+        for (int i = 0; i < currentNode.level(); i++)
+          {
+            previousNodes[i].next[i] = currentNode.next[i];
+          } // for
+        this.length--;
+      } // if
+    // else do nothing.
   } // remove(String)
-  
+
   /**
    * contains
+   * 
    * @param str
    * @return
    */
@@ -143,7 +195,7 @@ public class SkipListOfStrings
             return i;
           } // if
       } // for
-    
+
     // Return maxLevel otherwise
     return maxLevel;
   } // assignLvl()
