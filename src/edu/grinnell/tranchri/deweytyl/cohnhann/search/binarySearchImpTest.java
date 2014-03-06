@@ -34,6 +34,7 @@ public class binarySearchImpTest
             try
             {
               binarySearchImp.binarySearch(2*i+1,arr, 0, arr.length - 1);
+              fail("Exception not thrown");
             } // try
             catch (Exception e)
             {
@@ -45,6 +46,7 @@ public class binarySearchImpTest
             try
             {
               binarySearchImp.binarySearch(-1, arr, 0, arr.length - 1);
+              fail("Exception not thrown");
             } // try
             catch (Exception e)
             {
