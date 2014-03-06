@@ -1,22 +1,21 @@
 package edu.grinnell.tranchri.deweytyl.cohnhann.search;
 
 /**
- * binarySearchImp
- *      Implements binarySearch and includes a 
- *      midpoint method.
+ * binarySearchImp Implements binarySearch and includes a midpoint method.
  */
 
 public class binarySearchImp
 {
   /**
-   * Find the midpoint of two integers, rounds down if the
-   * midpoint is not whole.
+   * Find the midpoint of two integers, rounds down if the midpoint is not
+   * whole.
+   * 
    * @param int a
    * @param int b
    * @return int mid
    */
   public static int midpoint(int a, int b)
-  { 
+  {
     if (a % 2 != 0 && b % 2 != 0)
       {
         return (a / 2) + (b / 2) + 1;
@@ -27,7 +26,7 @@ public class binarySearchImp
         return (a / 2) + (b / 2);
       } // else there won't be under count
   } // midpoint(int, int)
-  
+
   /**
    * Search for val in values, return the index of an instance of val.
    * 
@@ -42,18 +41,18 @@ public class binarySearchImp
    *      for all reasonable i.
    * @post values[index] == val
    */
-  
+
   public static int binarySearch(int i, int[] vals, int lb, int ub)
     throws Exception
-  { 
+  {
     if (lb > ub)
       {
         throw new Exception(i + " not found in vals.");
       } // if lb is greater than ub then i is not in vals
-        
+
     // Get the midpoint value.
     int mid = midpoint(lb, ub);
-    
+
     if (vals[mid] == i)
       {
         return mid;

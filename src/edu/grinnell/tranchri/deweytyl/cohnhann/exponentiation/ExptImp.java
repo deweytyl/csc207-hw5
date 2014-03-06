@@ -13,9 +13,9 @@ public class ExptImp
   {
     ArrayList<Integer> actions = new ArrayList<Integer>();
     double result = 1;
-    
+
     // Loop using the exponent n to see what we should do
-    // if n is even: put a  0 into actions which is the number
+    // if n is even: put a 0 into actions which is the number
     //               that tells us multiply x by x squared.
     //               Decrement n by 2.
     // if n is odd: put a 1 into actions which is the number
@@ -26,7 +26,7 @@ public class ExptImp
     // n will be decremented until it reaches zero where it will
     // execute the actions and then break out of the loop.
     // Therefore we know that the loop terminates.
-    while(n >= 0)
+    while (n >= 0)
       {
         if (n == 0)
           {
@@ -35,7 +35,7 @@ public class ExptImp
                 if (actions.get(j) == 0)
                   {
                     result *= x * x;
-                  } // if 
+                  } // if
                 else
                   {
                     result *= x;

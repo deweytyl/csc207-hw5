@@ -21,38 +21,37 @@ public class binarySearchImpTest
           {
             arr[j] = j * 2;
           } // for every element in the array
-        
+
         for (int i = 0; i < arr.length; i++)
           {
             // Make sure that every values 2*i is in the ith
             // position of the array.
-            assert(binarySearchImp.binarySearch(i, arr, 0, arr.length - 1)
-                   == i);
-            
+            assert (binarySearchImp.binarySearch(i, arr, 0, arr.length - 1) == i);
+
             // Search for an odd number which should not
             // exist and so an exception should be thrown
             try
-            {
-              binarySearchImp.binarySearch(2*i+1,arr, 0, arr.length - 1);
-              fail("Exception not thrown");
-            } // try
+              {
+                binarySearchImp.binarySearch(2 * i + 1, arr, 0, arr.length - 1);
+                fail("Exception not thrown");
+              } // try
             catch (Exception e)
-            {
-              // it caught an exception as expected
-            } // catch
-            
+              {
+                // it caught an exception as expected
+              } // catch
+
             // Search for -1 which should not exist and
             // so an exception should be thrown
             try
-            {
-              binarySearchImp.binarySearch(-1, arr, 0, arr.length - 1);
-              fail("Exception not thrown");
-            } // try
+              {
+                binarySearchImp.binarySearch(-1, arr, 0, arr.length - 1);
+                fail("Exception not thrown");
+              } // try
             catch (Exception e)
-            {
-              // it caught an exception as expected
-            } // catch
-          } // for 
+              {
+                // it caught an exception as expected
+              } // catch
+          } // for
       } // for
   } // test()
 } // binarySearchImpTest

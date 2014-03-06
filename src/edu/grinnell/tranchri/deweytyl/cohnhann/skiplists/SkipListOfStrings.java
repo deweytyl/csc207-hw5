@@ -4,8 +4,7 @@ import java.util.Random;
 
 public class SkipListOfStrings
 {
-  SkipListNode head; // How do we want to implement head? an empty node? or
-                     // just the pointers?
+  SkipListNode head;
   int length;
   int maxLevel;
 
@@ -174,7 +173,7 @@ public class SkipListOfStrings
             return previousNodes;
           } // else
       } // while
-    return null;
+    return previousNodes;
   } // findPlace(String)
 
   /**

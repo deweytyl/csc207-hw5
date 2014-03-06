@@ -12,7 +12,7 @@ public class SkipListNode
   public SkipListNode(String stuff, int lvl)
   {
     contents = stuff;
-    next = new SkipListNode[lvl+1]; // is lvl max level or num levels?
+    next = new SkipListNode[lvl + 1];
     level = next.length;
   } // SkipListNode<T>(T, int)
 
@@ -20,7 +20,7 @@ public class SkipListNode
   {
     return this.next.length;
   }
-  
+
   /**
    * getNext(int lvl)
    * 
@@ -30,7 +30,7 @@ public class SkipListNode
   {
     return next[lvl];
   } // getNext(int)
-  
+
   /**
    * setNext(SkipListOfStringsNode node, int lvl)
    * 
@@ -40,7 +40,7 @@ public class SkipListNode
   {
     next[lvl] = node;
   } // setNext(SkipListOfStringsNode, int)
-  
+
   /**
    * peek(int lvl)
    * 
