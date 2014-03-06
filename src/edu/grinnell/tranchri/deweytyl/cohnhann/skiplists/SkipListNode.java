@@ -14,6 +14,11 @@ public class SkipListNode
     level = next.length;
   } // SkipListNode<T>(T, int)
 
+  public int level()
+  {
+    return this.next.length;
+  }
+  
   /**
    * getNext(int lvl)
    * 

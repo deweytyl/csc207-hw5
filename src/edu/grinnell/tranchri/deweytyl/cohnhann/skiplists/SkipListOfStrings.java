@@ -4,8 +4,7 @@ public class SkipListOfStrings
 {
   SkipListNode head; // How do we want to implement head? an empty node? or
                      // just the pointers?
-  SkipListNode[] prev;
-
+  int length;
   // Additionally, we need to think about what NIL means in this context.
   // ~design decisions~
 
@@ -24,7 +23,21 @@ public class SkipListOfStrings
    */
   public void add(String str)
   {
-    // STUB
+    SkipListNode[] previousNodes = findPlace(str);
+
+    SkipListNode newNode = new SkipListNode(str, this.assignLevel());
+
+    // make it point to its followers
+    for (int i = 0; i < newNode.level(); i++)
+      {
+        newNode.next[i] = previousNodes[i].next[i];
+      } // for
+    
+    for (int i = 0; i < newNode.level(); i++)
+      {
+        previousNodes[i].next[i] = newNode;
+      } // for
+    length++;
   } // add(String)
 
   /**
@@ -54,7 +67,7 @@ public class SkipListOfStrings
   private SkipListNode[] findPlace(String str)
   {
     int lvl = this.maxLevel;
-    SkipListNode[] previousNodes = new SkipListNode[this.maxLevel+1];
+    SkipListNode[] previousNodes = new SkipListNode[this.maxLevel + 1];
     SkipListNode currentNode = head;
     String nextString;
 
@@ -82,9 +95,14 @@ public class SkipListOfStrings
           } // else
       } // while
     return null;
+  } // findPlace(String)
+
+  private int assignLevel()
+  {
+    return 0; // STUB
   }
 
-  private void increaseMaxLevel(int lvl)
+  public void increaseMaxLevel(int lvl)
   {
     if (lvl > this.maxLevel)
       {
@@ -94,7 +112,6 @@ public class SkipListOfStrings
             expanded[i] = this.head.next[i];
           } // for
         this.head.next = expanded;
-        this.head.level = this.head.next.length;
       } // if
   } // increaseMaxLevel(int)
 } // class SkipListOfStrings
