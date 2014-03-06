@@ -1,5 +1,7 @@
 package edu.grinnell.tranchri.deweytyl.cohnhann.skiplists;
 
+import java.util.Random;
+
 public class SkipListNode
 {
 
