@@ -16,20 +16,16 @@ public class binarySearchImp
    * @return int mid
    */
   public static int midpoint(int a, int b)
-  {
-    int mid = 0;
-    
-    mid = (a / 2) + (b / 2);
-    
-    if (mid % 2 == 0)
+  { 
+    if (a % 2 != 0 && b % 2 != 0)
       {
-        return mid;
-      } // if mid is even then return mid
+        return (a / 2) + (b / 2) + 1;
+      } // if there are two odd numbers account for
+        // under counting
     else
       {
-        return mid + 1;
-      } // else mid is odd then correct for
-        // off by one error
+        return (a / 2) + (b / 2);
+      } // else there won't be under count
   } // midpoint(int, int)
   
   /**
@@ -49,19 +45,20 @@ public class binarySearchImp
   
   public static int binarySearch(int i, int[] vals, int lb, int ub)
     throws Exception
-  {
-    // Get the midpoint of lb and ub
-    int mid = midpoint(lb, ub);
-
+  { 
     if (lb > ub)
       {
-        throw new Exception(i + "not found in vals.");
+        throw new Exception(i + " not found in vals.");
       } // if lb is greater than ub then i is not in vals
-
+        
+    // Get the midpoint value.
+    int mid = midpoint(lb, ub);
+    
     if (vals[mid] == i)
       {
         return mid;
-      }
+      } // if the value at mid is the value we are
+        // looking for
     else if (vals[mid] < i)
       {
         return binarySearch(i, vals, mid + 1, ub);
@@ -72,6 +69,5 @@ public class binarySearchImp
         return binarySearch(i, vals, lb, mid - 1);
       } // else the mid is greater than i then call
         // binarySearch again with mid-1 as the new ub
-
   } // binarySearch(int, int, int, int)
 } // class binarySearch

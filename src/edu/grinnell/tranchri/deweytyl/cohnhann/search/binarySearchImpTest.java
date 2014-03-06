@@ -6,20 +6,51 @@ import org.junit.Test;
 
 public class binarySearchImpTest
 {
-
-//  For each s from 1 to 32
-//  Create an array of size s, containing the values 0, 2, 4, ... 2*(s-1)
-//  For all i from 0 to s-1, inclusive
-//      // Make sure that value 2*i is in position i
-//      assert(binarySearch(2*i, array) == i)
-//      // Make sure that odd values are not in the array
-//      assertException(binarySearch(2*i+1, array))
-//  assertException(-1, array)
-  
   @Test
   public void test()
+    throws Exception
   {
-    fail("Not yet implemented");
-  }
+    // Make an array of length s and fill with even numbers
+    // starting at 0.
+    for (int s = 1; s < 32; s++)
+      {
+        // Make the array
+        int[] arr = new int[s];
 
-}
+        for (int j = 0; j < s; j++)
+          {
+            arr[j] = j * 2;
+          } // for every element in the array
+        
+        for (int i = 0; i < arr.length; i++)
+          {
+            // Make sure that every values 2*i is in the ith
+            // position of the array.
+            assert(binarySearchImp.binarySearch(i, arr, 0, arr.length - 1)
+                   == i);
+            
+            // Search for an odd number which should not
+            // exist and so an exception should be thrown
+            try
+            {
+              binarySearchImp.binarySearch(2*i+1,arr, 0, arr.length - 1);
+            } // try
+            catch (Exception e)
+            {
+              // it caught an exception as expected
+            } // catch
+            
+            // Search for -1 which should not exist and
+            // so an exception should be thrown
+            try
+            {
+              binarySearchImp.binarySearch(-1, arr, 0, arr.length - 1);
+            } // try
+            catch (Exception e)
+            {
+              // it caught an exception as expected
+            } // catch
+          } // for 
+      } // for
+  } // test()
+} // binarySearchImpTest
